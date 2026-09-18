@@ -1,0 +1,32 @@
+{
+  "name": "Musfira AI - Made the horizontal open-source model for Jev with RLCD, and it surpasses all the Jev benchmarks. HF space, benchmark, model, repo",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual-trigger",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:11434/api/generate",
+        "method": "POST",
+        "jsonParameters": true,
+        "options": {},
+        "bodyParametersJson": "{\"model\": \"llama3\", \"prompt\": \"Summarize: Made the horizontal open-source model for Jev with RLCD, and it surpasses all the Jev benchmarks. HF space, benchmark, model, repo\", \"stream\": false}"
+      },
+      "id": "ollama-call",
+      "name": "Query Ollama",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [460, 300]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [[{"node": "Query Ollama", "type": "main", "index": 0}]]
+    }
+  }
+}
